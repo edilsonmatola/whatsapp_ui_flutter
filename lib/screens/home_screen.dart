@@ -1,0 +1,111 @@
+import 'package:flutter/material.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  late PageController _pageController;
+
+  Widget _buildListContacts(String contactName, String message) {
+    return ListTile(
+      onTap: () {},
+      leading: Container(
+        decoration: BoxDecoration(
+            border: Border.all(), borderRadius: BorderRadius.circular(20)),
+        child: Icon(
+          Icons.person_sharp,
+          size: 40,
+        ),
+      ),
+      title: Text(
+        contactName,
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+      subtitle: Text(
+        message,
+        style: Theme.of(context).textTheme.bodyText2,
+        overflow: TextOverflow.ellipsis,
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+    /* ViewPOrt is the amount of space that our posts will take in our page
+    * controller, which is 80% = 0.8*/
+    _pageController = PageController(viewportFraction: 0.8);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(
+          Icons.message,
+        ),
+      ),
+      appBar: AppBar(
+        title: Text('WhatsApp'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.search_outlined,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.more_vert_outlined,
+            ),
+          ),
+        ],
+        bottom: TabBar(
+          controller: _tabController,
+          indicatorColor: Color.fromRGBO(37, 211, 102, 1),
+          tabs: [
+            Tab(
+              icon: Icon(
+                Icons.camera_alt,
+              ),
+            ),
+            Tab(
+              text: 'CHATS',
+            ),
+            Tab(
+              text: 'STATUS',
+            ),
+            Tab(
+              text: 'CALLS',
+            ),
+          ],
+        ),
+      ),
+      body: ListView(
+        physics: BouncingScrollPhysics(),
+        padding: EdgeInsets.only(top: 5),
+        children: [
+          _buildListContacts('J. Cole', 'The ville is back, the real is back'),
+          _buildListContacts('Kendrick Lamar', 'DAMN'),
+          _buildListContacts('Isaiah Rashad', "What's up bruh?"),
+          _buildListContacts('Big Sean', 'Detroit 2 is out now!'),
+          _buildListContacts('David Goggins', 'Get Hard!'),
+          _buildListContacts('Kota The Friend',
+              'Just sharing love, positivity and good vibes.'),
+          _buildListContacts('Quavo', 'Just sharing Mama!'),
+          _buildListContacts(
+              'Aaron May', 'Let Go bro, let it feel like nothing.'),
+        ],
+      ),
+    );
+  }
+}
