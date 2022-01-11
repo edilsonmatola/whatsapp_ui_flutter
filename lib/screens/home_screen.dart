@@ -12,12 +12,15 @@ class _HomeScreenState extends State<HomeScreen>
   late TabController _tabController;
   late PageController _pageController;
 
-  Widget _buildListContacts(String contactName, String message) {
+  Widget _buildListContacts(
+      {required String contactName, required String message}) {
     return ListTile(
       onTap: () {},
       leading: Container(
         decoration: BoxDecoration(
-            border: Border.all(), borderRadius: BorderRadius.circular(20)),
+          border: Border.all(),
+          borderRadius: BorderRadius.circular(20),
+        ),
         child: Icon(
           Icons.person_sharp,
           size: 40,
@@ -94,16 +97,38 @@ class _HomeScreenState extends State<HomeScreen>
         physics: BouncingScrollPhysics(),
         padding: EdgeInsets.only(top: 5),
         children: [
-          _buildListContacts('J. Cole', 'The ville is back, the real is back'),
-          _buildListContacts('Kendrick Lamar', 'DAMN'),
-          _buildListContacts('Isaiah Rashad', "What's up bruh?"),
-          _buildListContacts('Big Sean', 'Detroit 2 is out now!'),
-          _buildListContacts('David Goggins', 'Get Hard!'),
-          _buildListContacts('Kota The Friend',
-              'Just sharing love, positivity and good vibes.'),
-          _buildListContacts('Quavo', 'Just sharing Mama!'),
           _buildListContacts(
-              'Aaron May', 'Let Go bro, let it feel like nothing.'),
+            contactName: 'J. Cole',
+            message: 'The ville is back, the real is back',
+          ),
+          _buildListContacts(
+            contactName: 'Kendrick Lamar',
+            message: 'DAMN',
+          ),
+          _buildListContacts(
+            contactName: 'Isaiah Rashad',
+            message: "What's up bruh?",
+          ),
+          _buildListContacts(
+            contactName: 'Big Sean',
+            message: 'Detroit 2 is out now!',
+          ),
+          _buildListContacts(
+            contactName: 'David Goggins',
+            message: 'Get Hard!',
+          ),
+          _buildListContacts(
+            contactName: 'Kota The Friend',
+            message: 'Just sharing love, positivity and good vibes.',
+          ),
+          _buildListContacts(
+            contactName: 'Quavo',
+            message: 'Just sharing Mama!',
+          ),
+          _buildListContacts(
+            contactName: 'Aaron May',
+            message: 'Let Go bro, let it feel like nothing.',
+          ),
         ],
       ),
     );

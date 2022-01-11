@@ -13,8 +13,10 @@ class MyApp extends StatelessWidget {
       title: 'Whatsapp',
       theme: ThemeData(
         primaryColor: Color.fromRGBO(7, 94, 84, 1),
-        accentColor: Color.fromRGBO(18, 140, 126, 1),
-        buttonColor: Color.fromRGBO(37, 211, 102, 1),
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: Color.fromRGBO(18, 140, 126, 1),
+          cardColor: Color.fromRGBO(37, 211, 102, 1),
+        ),
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: Color.fromRGBO(37, 211, 102, 1),
         ),
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
             fontStyle: FontStyle.normal,
             fontWeight: FontWeight.w400,
           ),
-        )
+        ),
       ),
       home: HomeScreen(),
       debugShowCheckedModeBanner: false,
