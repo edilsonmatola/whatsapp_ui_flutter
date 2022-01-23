@@ -9,6 +9,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
+  late ScrollController _scrollController;
   late TabController _tabController;
   late PageController _pageController;
 
@@ -48,89 +49,144 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   @override
+  void dispose() {
+    _scrollController.dispose();
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: NestedScrollView(
+        controller: _scrollController,
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          SliverAppBar(
+            floating: true,
+            forceElevated: innerBoxIsScrolled,
+            backgroundColor: Theme.of(context).primaryColor,
+            title: Text('WhatsApp'),
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.search_outlined,
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.more_vert_outlined,
+                ),
+              ),
+            ],
+            bottom: TabBar(
+              controller: _tabController,
+              indicatorColor: Color.fromRGBO(37, 211, 102, 1),
+              tabs: [
+                Tab(
+                  icon: Icon(
+                    Icons.camera_alt,
+                  ),
+                ),
+                Tab(
+                  text: 'CHATS',
+                ),
+                Tab(
+                  text: 'STATUS',
+                ),
+                Tab(
+                  text: 'CALLS',
+                ),
+              ],
+            ),
+          ),
+        ],
+        body: SingleChildScrollView(
+          padding: EdgeInsets.only(top: 5),
+          child: Column(
+            children: [
+              _buildListContacts(
+                contactName: 'J. Cole',
+                message: 'The ville is back, the real is back',
+              ),
+              _buildListContacts(
+                contactName: 'Kendrick Lamar',
+                message: 'DAMN',
+              ),
+              _buildListContacts(
+                contactName: 'Isaiah Rashad',
+                message: "What's up bruh?",
+              ),
+              _buildListContacts(
+                contactName: 'Big Sean',
+                message: 'Detroit 2 is out now!',
+              ),
+              _buildListContacts(
+                contactName: 'David Goggins',
+                message: 'Get Hard!',
+              ),
+              _buildListContacts(
+                contactName: 'Kota The Friend',
+                message: 'Just sharing love, positivity and good vibes.',
+              ),
+              _buildListContacts(
+                contactName: 'Quavo',
+                message: 'Just sharing Mama!',
+              ),
+              _buildListContacts(
+                contactName: 'Aaron May',
+                message: 'Let Go bro, let it feel like nothing.',
+              ),
+            ],
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(
           Icons.message,
         ),
       ),
-      appBar: AppBar(
-        title: Text('WhatsApp'),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search_outlined,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.more_vert_outlined,
-            ),
-          ),
-        ],
-        bottom: TabBar(
-          controller: _tabController,
-          indicatorColor: Color.fromRGBO(37, 211, 102, 1),
-          tabs: [
-            Tab(
-              icon: Icon(
-                Icons.camera_alt,
-              ),
-            ),
-            Tab(
-              text: 'CHATS',
-            ),
-            Tab(
-              text: 'STATUS',
-            ),
-            Tab(
-              text: 'CALLS',
-            ),
-          ],
-        ),
-      ),
-      body: ListView(
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.only(top: 5),
-        children: [
-          _buildListContacts(
-            contactName: 'J. Cole',
-            message: 'The ville is back, the real is back',
-          ),
-          _buildListContacts(
-            contactName: 'Kendrick Lamar',
-            message: 'DAMN',
-          ),
-          _buildListContacts(
-            contactName: 'Isaiah Rashad',
-            message: "What's up bruh?",
-          ),
-          _buildListContacts(
-            contactName: 'Big Sean',
-            message: 'Detroit 2 is out now!',
-          ),
-          _buildListContacts(
-            contactName: 'David Goggins',
-            message: 'Get Hard!',
-          ),
-          _buildListContacts(
-            contactName: 'Kota The Friend',
-            message: 'Just sharing love, positivity and good vibes.',
-          ),
-          _buildListContacts(
-            contactName: 'Quavo',
-            message: 'Just sharing Mama!',
-          ),
-          _buildListContacts(
-            contactName: 'Aaron May',
-            message: 'Let Go bro, let it feel like nothing.',
-          ),
-        ],
-      ),
     );
   }
 }
+
+/* ListView(
+          physics: BouncingScrollPhysics(),
+          padding: EdgeInsets.only(top: 5),
+          children: [
+            _buildListContacts(
+              contactName: 'J. Cole',
+              message: 'The ville is back, the real is back',
+            ),
+            _buildListContacts(
+              contactName: 'Kendrick Lamar',
+              message: 'DAMN',
+            ),
+            _buildListContacts(
+              contactName: 'Isaiah Rashad',
+              message: "What's up bruh?",
+            ),
+            _buildListContacts(
+              contactName: 'Big Sean',
+              message: 'Detroit 2 is out now!',
+            ),
+            _buildListContacts(
+              contactName: 'David Goggins',
+              message: 'Get Hard!',
+            ),
+            _buildListContacts(
+              contactName: 'Kota The Friend',
+              message: 'Just sharing love, positivity and good vibes.',
+            ),
+            _buildListContacts(
+              contactName: 'Quavo',
+              message: 'Just sharing Mama!',
+            ),
+            _buildListContacts(
+              contactName: 'Aaron May',
+              message: 'Let Go bro, let it feel like nothing.',
+            ),
+          ],
+        ), */
