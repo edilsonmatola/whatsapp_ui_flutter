@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
-  late ScrollController _scrollController;
+  ScrollController scrollController = ScrollController();
   late TabController _tabController;
   late PageController _pageController;
 
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    scrollController.dispose();
     _pageController.dispose();
     super.dispose();
   }
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: NestedScrollView(
-        controller: _scrollController,
+        controller: scrollController,
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
             floating: true,
