@@ -62,7 +62,6 @@ class _HomeScreenState extends State<HomeScreen>
         controller: scrollController,
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
-            floating: true,
             forceElevated: innerBoxIsScrolled,
             backgroundColor: Theme.of(context).primaryColor,
             title: Text('WhatsApp'),
@@ -83,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen>
             bottom: TabBar(
               controller: _tabController,
               indicatorColor: Color.fromRGBO(37, 211, 102, 1),
+              indicatorWeight: 4,
               tabs: [
                 Tab(
                   icon: Icon(
@@ -146,6 +146,7 @@ class _HomeScreenState extends State<HomeScreen>
         onPressed: () {},
         child: Icon(
           Icons.message,
+          color: Colors.white,
         ),
       ),
     );
