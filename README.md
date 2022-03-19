@@ -16,12 +16,7 @@ git clone https://github.com/edilsonmatola/whatsapp_ui_flutter.git
 cd whatsapp_ui_flutter
 ```
 
-3. Create Firebase Project
-4. Enable Authentication
-5. Make Firestore Rules
-6. Create Android, iOS & Web Apps
-
-##### 7. To run the app, simply write the following commands:
+##### 3. To run the app, simply write the following commands:
 
 ```bash
 flutter pub get
