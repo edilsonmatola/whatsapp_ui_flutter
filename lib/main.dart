@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
+import 'utils/colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,13 +13,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Whatsapp',
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(7, 94, 84, 1),
+        primaryColor: AppColors.tealGreen,
         colorScheme: ColorScheme.fromSwatch(
-          accentColor: Color.fromRGBO(37, 211, 102, 1),
-          cardColor: Color.fromRGBO(37, 211, 102, 1),
+          accentColor: AppColors.lightGreen,
+          cardColor: AppColors.lightGreen,
         ),
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: Color.fromRGBO(37, 211, 102, 1),
+          backgroundColor: AppColors.tealGreen,
         ),
         textTheme: TextTheme(
           /* ListTile Title style */
